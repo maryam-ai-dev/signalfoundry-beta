@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SignalFoundry — Let the gaps find you</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'DM Sans', 'Segoe UI', sans-serif;
+      background: #080706;
+      color: #fafaf9;
+      min-height: 100vh;
+    }
+    .page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 48px 24px 64px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 48px;
+    }
+    .logo-mark {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, #f59e0b, #ea580c);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 16px; color: white;
+      box-shadow: 0 4px 16px rgba(245,158,11,0.4);
+    }
+    .logo-name {
+      font-size: 18px; font-weight: 700;
+      color: #fafaf9; letter-spacing: -0.02em;
+    }
+    .badge {
+      background: rgba(245,158,11,0.15);
+      border: 1px solid rgba(245,158,11,0.3);
+      border-radius: 20px; padding: 4px 14px;
+      font-size: 11px; font-weight: 700; color: #f59e0b;
+      letter-spacing: 0.08em; margin-bottom: 24px;
+    }
+    h1 {
+      font-size: 38px; font-weight: 900;
+      letter-spacing: -0.03em; line-height: 1.15;
+      margin-bottom: 14px; max-width: 520px;
+      text-align: center; color: #fafaf9;
+    }
+    .gradient-text {
+      background: linear-gradient(90deg, #f59e0b, #ea580c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .subtitle {
+      font-size: 15px; color: #57534e;
+      line-height: 1.7; max-width: 440px;
+      margin-bottom: 36px; text-align: center;
+    }
+    .personas {
+      display: flex; gap: 12px;
+      max-width: 480px; width: 100%;
+      margin-bottom: 48px;
+    }
+    .persona {
+      flex: 1; background: #0f0d0b;
+      border: 1px solid #1c1a17;
+      border-radius: 14px; padding: 16px 18px;
+    }
+    .persona-icon { font-size: 20px; margin-bottom: 8px; }
+    .persona-title { font-size: 13px; font-weight: 700; color: #fafaf9; margin-bottom: 4px; }
+    .persona-desc { font-size: 12px; color: #57534e; line-height: 1.55; }
+    .how-label {
+      font-size: 10px; font-weight: 700; color: #44403c;
+      letter-spacing: 0.12em; text-align: center;
+      margin-bottom: 28px;
+    }
+    .steps {
+      max-width: 480px; width: 100%;
+      margin-bottom: 48px;
+    }
+    .step {
+      display: flex; gap: 16px;
+    }
+    .step-left {
+      display: flex; flex-direction: column;
+      align-items: center;
+    }
+    .step-icon {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: #0f0d0b; border: 1px solid #1c1a17;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .step-line {
+      width: 1px; flex: 1; min-height: 24px;
+      background: #1c1a17; margin: 4px 0;
+    }
+    .step-content { padding-bottom: 20px; padding-top: 8px; }
+    .step-content:last-child { padding-bottom: 0; }
+    .step-title { font-size: 14px; font-weight: 700; color: #fafaf9; margin-bottom: 4px; }
+    .step-desc { font-size: 12px; color: #57534e; line-height: 1.65; }
+    .stats {
+      display: flex; gap: 48px;
+      margin-bottom: 44px;
+    }
+    .stat { text-align: center; }
+    .stat-n { font-size: 24px; font-weight: 800; color: #fafaf9; letter-spacing: -0.02em; }
+    .stat-label { font-size: 11px; color: #44403c; }
+    .cta-box {
+      background: #0f0d0b; border: 1px solid #1c1a17;
+      border-radius: 20px; padding: 32px 40px;
+      max-width: 400px; width: 100%;
+      text-align: center; margin-bottom: 24px;
+    }
+    .price-label {
+      font-size: 11px; font-weight: 600; color: #44403c;
+      letter-spacing: 0.08em; margin-bottom: 8px;
+    }
+    .price {
+      display: flex; align-items: baseline;
+      justify-content: center; gap: 4px; margin-bottom: 4px;
+    }
+    .price-amount { font-size: 48px; font-weight: 900; color: #fafaf9; letter-spacing: -0.03em; }
+    .price-period { font-size: 14px; color: #44403c; }
+    .price-note { font-size: 12px; color: #44403c; margin-bottom: 24px; }
+    .cta-btn {
+      width: 100%; padding: 14px;
+      border-radius: 12px; border: none;
+      background: linear-gradient(135deg, #f59e0b, #ea580c);
+      color: white; font-size: 15px; font-weight: 700;
+      cursor: pointer; font-family: inherit;
+      box-shadow: 0 4px 16px rgba(245,158,11,0.35);
+      margin-bottom: 12px;
+      text-decoration: none; display: block;
+      transition: opacity 0.15s;
+    }
+    .cta-btn:hover { opacity: 0.9; }
+    .built-at { font-size: 11px; color: #44403c; }
+    .features {
+      display: flex; flex-direction: column; gap: 10px;
+      max-width: 360px; width: 100%;
+    }
+    .feature { font-size: 13px; color: #57534e; }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 28px; }
+      .personas { flex-direction: column; }
+      .stats { gap: 24px; }
+      .cta-box { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- Logo -->
+    <div class="logo">
+      <div class="logo-mark">S</div>
+      <span class="logo-name">SignalFoundry</span>
+    </div>
+
+    <!-- Badge -->
+    <div class="badge">⚡ FOUNDING MEMBER ACCESS</div>
+
+    <!-- Headline -->
+    <h1>
+      Stop searching for ideas.<br />
+      <span class="gradient-text">Let the gaps find you.</span>
+    </h1>
+
+    <p class="subtitle">
+      SignalFoundry scans thousands of real conversations and surfaces market gaps that match your profile. The longer you use it, the smarter it gets.
+    </p>
+
+    <!-- Personas -->
+    <div class="personas">
+      <div class="persona">
+        <div class="persona-icon">🚀</div>
+        <div class="persona-title">For founders</div>
+        <div class="persona-desc">Find what to build. High demand, weak competition, real signal.</div>
+      </div>
+      <div class="persona">
+        <div class="persona-icon">🔬</div>
+        <div class="persona-title">For researchers</div>
+        <div class="persona-desc">Surface overlooked gaps across disciplines — from Alzheimer's to AI safety.</div>
+      </div>
+    </div>
+
+    <!-- How it works -->
+    <div class="how-label">HOW IT WORKS</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-left">
+          <div class="step-icon">🎯</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-title">Declare your spaces</div>
+          <div class="step-desc">Tell us what you're building or researching. Be specific — 'household nutrition apps' not 'food'.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-left">
+          <div class="step-icon">📡</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-title">We scan thousands of conversations</div>
+          <div class="step-desc">Reddit, HN, research papers and more. Real people, real frustrations, real gaps.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-left">
+          <div class="step-icon">🔥</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-title">Hot gaps surface to the top</div>
+          <div class="step-desc">High demand + weak competition = high signal. We show you where the opportunity actually is.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-left">
+          <div class="step-icon">💬</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-title">Jump into real conversations</div>
+          <div class="step-desc">Surface the exact threads where your future customers are talking. Find your first users without cold outreach.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-left">
+          <div class="step-icon">🧠</div>
+        </div>
+        <div class="step-content" style="padding-bottom:0">
+          <div class="step-title">It compounds over time</div>
+          <div class="step-desc">The longer you use it, the more it learns your spaces and surfaces new signals — without you starting from zero.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-n">13+</div>
+        <div class="stat-label">Sources scanned</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">Live</div>
+        <div class="stat-label">Signal updates</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">∞</div>
+        <div class="stat-label">Compounds over time</div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-box">
+      <div class="price-label">FOUNDING MEMBER PRICE</div>
+      <div class="price">
+        <span class="price-amount">£5</span>
+        <span class="price-period">early access</span>
+      </div>
+      <div class="price-note">Cancel anytime · Price locks in forever</div>
+      <a href="YOUR_STRIPE_LINK_HERE" class="cta-btn">Join early access →</a>
+      <div class="built-at">Built at Pop The Bubble ⚡ · London, June 2026</div>
+    </div>
+
+    <!-- Features -->
+    <div class="features">
+      <div class="feature">✓ Specific spaces, not generic categories</div>
+      <div class="feature">✓ Real signals from thousands of real conversations</div>
+      <div class="feature">✓ High demand + weak competition = hot gap</div>
+      <div class="feature">✓ Memory compounds — never start from zero again</div>
+      <div class="feature">✓ Jump into conversations to find your first users</div>
+    </div>
+  </div>
+</body>
+</html>
